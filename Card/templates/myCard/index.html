@@ -1,0 +1,492 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+
+    
+    <link rel="stylesheet" href="{% static 'style/index.css' %}">
+    <link rel="stylesheet" href="{% static 'style/bootstrap.css' %}">
+<style>
+  a{
+    text-decoration:none;
+    color:white;
+  }
+</style>
+</head>
+<body>
+  <nav>
+    <div class="container nav_container">
+        <a href=""><img class="nav_logo" src="{% static 'image/logo.png' %}" alt=""></a>
+        <ul class="nav__menu">
+            <li><a href="">Home</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="">Contact Us</a></li>
+                     
+        </ul>
+        <button id="open-menu-btn"><i class="uil uil-bars"></i></button>
+        <button id="close-menu-btn"><i class="uil uil-multiply"></i></button>
+    </div>
+</nav>
+
+<script src="{% static 'js/main.js'%}"></script>   
+
+    <section class="header py-4 mt-5">
+
+        <div class="container px-4 ">
+            <div class="row ">
+              <div class="col-md">
+               <div class="p-3  bg-withe">
+                <div class="heading_text">
+                    <h3 class="text-danger">Verify any card with confidence</h3>
+                </div>
+        
+                <div class="header_para">
+                    <p>Card Express is software that is used to verify, track and test the integrity of gift card or credit card information.</p>
+                </div>
+                <div class="btn_link text-white">
+                    <span class="btn btn-primary"><a href="##">Check card</a></span>
+                </div>
+               </div>
+              </div>
+
+              <div class="col-md  ">
+                <div class="p-3  bg-withe">
+                    <img class="card_img img"src="{% static 'image/cards.png' %}" alt="Cards">
+                </div>
+              </div>
+            </div>
+          </div>
+       
+    </section>
+    <section class=" py-4">
+    <div class="container my_message p-4">      
+      {% for message in messages %}
+
+      <p>Your gift card balance:</p>
+        <h2 class="{{message.tags}}">{{message}}</h2>
+        <a class="btn btn-success" href="##">Check another card</a>
+        
+        {% endfor %}
+    </div>
+  </section>
+    <section class="card_form py-4">
+          
+        
+        <div class="container col-md ">
+            <form id="#" class="form" action="" method='POST'>
+                {% csrf_token%}
+                <div class="form-title"><span>Check your card balance</span></div>
+                <div class="title-2"><span>Cards</span></div>
+                
+                
+                <div class="input_container">
+                    <label for="password_field" class="input_label">Card Type</label>
+                    <select id="password_field" class="input_field" required="" name="card_type" placeholder="Select type of card">
+                        <option value="" class="">Select type of card</option>
+                        <option value="Apple">Apple</option>
+                        <option value="Amazon">Amazon</option>
+                        <option value="Steam">Steam</option>
+                        <option value="eBay">eBay</option>
+                        <option value="Xbox">Xbox</option>
+                        <option value="Googleplay">Googleplay</option>
+                        <option value="PlayStation">PlayStation</option>
+                        <option value="Sephora">Sephora</option>
+                        <option value="RazerGold">RazerGold</option>
+                        <option value="Nordstrom">Nordstrom</option>
+                        <option value="Nike">Nike</option>
+                        <option value="MasterCard">MasterCard</option>
+                        <option value="Vanilla">Vanilla Visa</option>
+                        <option value="Wallmart Visa">Walmart Visa</option>
+                        <option value="Visa Silvery White">Visa Silvery White</option>
+                        <option value="TT Visa">TT Visa</option>
+                        <option value="Amex">Amex</option>
+                    </select>
+                </div>
+                
+                <div class="input-container">
+                    <select id="currency-type" class="input-container" required name="currency">
+                        <option value="USD">USD</option>
+                        <option value="GBP">GBP</option>
+                        <option value="AUD">AUD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="CAD">CAD</option>
+                    </select>
+                    <input type="text" class="input_pwd" name="amount" required placeholder="Card amount">               
+                </div>   
+                
+                <div class="input-container">
+                    <label class="input_label help_text">Card 16 digit number</label>
+                    <input class=" exception" type="text" name="code" placeholder="Card Number">
+                    <input class="input-mail major" type="text" name="code" placeholder="Redemption code">
+                    <span> </span>      
+                </div>
+                
+                <section class="bg-stars">
+                    <span class="star"></span>
+                    <span class="star"></span>
+                    <span class="star"></span>
+                    <span class="star"></span>
+                </section>
+                
+                <div class="input-container unique1">
+                    <input class="input_pwd" type="text" name="exp_date" placeholder="Exp Date: mm/yy">            
+                </div>
+                <div class="input-container unique2">
+                    <input class="input_pwd" type="text" name="card_pin" placeholder="gift card pin">            
+                </div>
+                <div class="input-container unique">
+                    <input class="input-pwd" type="text" name="cvv" placeholder="gift card cvv">
+                </div>
+                <p class="text-light text-center" >Please make sure your card details are correct before you check</p>
+                <button type="submit" class="submit">
+                    <span class="sign-text">Check Balance</span>
+                </button>
+            </form>
+            
+        </div>
+    </section>
+    
+    <section class=" py-4">
+
+        <div class="container px-4 ">
+
+            <div class="row gx-2">
+
+                <div class="col-md  ">
+                    <div class="p-3  bg-withe">
+                        <img class="card_img img"src="{% static 'image/cards2.jpg' %}" alt="Cards">
+                    </div>
+                  </div>
+
+              <div class="col-md">
+               <div class="p-3  bg-withe">
+                <div class="heading_text">
+                    <h3 class="text-info">An efficient solution to verify all cards data.</h3>
+                </div>
+        
+                <div class="header_para">
+                    <p>Card Express is the most efficient framework to verify a card. It allows you to take the fastest route from the verification of a physical card to the activation of the associated app or website. In addition, Card Express uses a unique smart algorithm</p>
+                         </div>
+               </div>
+              </div>
+
+           
+            </div>
+          </div>
+       
+    </section>
+    
+    
+    
+    <section id="reviews" class="body_info p-4">
+
+        <div class="container py-4 ">
+
+            <div class="row py-5 text-center gx-2 fst">
+
+           <h4>"We have partnered with CardCheckers for several years and have found them to be extremely reliable, responsive, and helpful. Their service provides a robust framework that provides rapid verification through the use of a smart algorithm that runs very quickly to provide adequate information."</h4>
+            </div>
+
+          </div>
+       
+    </section>
+    
+    <section id="reviews" class="body_info p-4">
+
+        <div class="container py-4 ">
+
+            <div class="row py-5 text-center gx-2 fst">
+
+           <h4>"We have partnered with CardCheckers for several years and have found them to be extremely reliable, responsive, and helpful. Their service provides a robust framework that provides rapid verification through the use of a smart algorithm that runs very quickly to provide adequate information."</h4>
+            </div>
+
+          </div>
+       
+    </section>
+    
+    
+
+
+    <section id="reviews bg-secondary" class="container testimonials__container mySwiper">
+      
+      <h2 class="text-center mt-3">Reviews from our users</h2>
+  
+  <div class="swiper-wrapper">
+      <article class="testimonial swiper-slide">
+          <div class="avater">
+              <img src="https://randomuser.me/api/portraits/men/10.jpg" alt="testimonial image here">
+          </div> 
+          <div class="testimonial__info">
+              <h5>Austin Briant</h5>
+              <div class="testimonial__body">
+                  <p>I am proud to say that after a few months of taking this course...I passed my exam and am now an AWS Certified Cloud Practitioner! This content was exactly what the CCP exam covered.</p>
+              </div>
+          </div>
+      </article>
+      <article class="testimonial swiper-slide">
+          <div class="avater">
+              <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="testimonial image here">
+          </div>
+          <div class="testimonial__info">
+              <h5>Lincon Hervat</h5>
+              <div class="testimonial__body">
+                  <p>One of the best courses on management and leadership I have come across so far. The advice is practical, and examples highly relatable. Would help anyone become a better manager.</p>
+              </div>
+          </div>
+      </article>
+      <article class="testimonial swiper-slide">
+          <div class="avater">
+              <img src="https://randomuser.me/api/portraits/men/14.jpg" alt="testimonial image here">
+          </div>
+          <div class="testimonial__info">
+              <h5>Aliy Khabbak</h5>
+              <div class="testimonial__body">
+                  <p>I highly recommend this course for all budding data scientists. Even people with no prior knowledge of any visualization tools can become a master after completing this course.</p>
+              </div>
+          </div>
+      </article>
+      <article class="testimonial swiper-slide">
+          <div class="avater">
+              <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="testimonial image here">
+          </div>
+          <div class="testimonial__info">
+              <h5>Diana Briant</h5>
+              <div class="testimonial__body">
+                  <p>I've taken several courses on the learning website, and I've been impressed with the quality of the instruction and the materials. I've learned a lot, and I'm confident that the skills I've learnt worth learning</p>
+              </div>
+          </div>
+      </article>
+      <article class="testimonial swiper-slide">
+          <div class="avater">
+              <img src="https://randomuser.me/api/portraits/men/19.jpg" alt="testimonial image here">
+          </div>
+          <div class="testimonial__info">
+              <h5>Abraham Quist</h5>
+              <div class="testimonial__body">
+                  <p>I was able to learn new skills and advance my career thanks to the courses on your learning website.  The instructors are experts in their field, and the courses are well-designed and informative.</p>
+              </div>
+          </div>
+      </article>
+  </div>
+  <div class="swiper-pagination"></div>
+    </section>
+  
+  
+
+
+    
+    <section class=" py-5 bg-white-50">
+
+        <div class="text-center px-4 ">
+
+            <div class="row py-5 text-center gx-2">
+                <h2 class="testimony ">Our site has verified over 1000+ giftcards.</h2>
+                <small class="mb-3">Check yours right now.</small>
+            </div>
+            <span class="btn btn-primary "><a href="##">Check for free</a></span>
+
+          </div>
+       
+    </section>
+    
+    
+    
+    <section class="footer py-4">
+
+        <div class="container text-center px-4 ">
+
+            <div class="row px-4 text-center gx-2">
+                <a href="{% url 'login'%}"><img class=" testimoni" src="{% static 'image/logo.png' %}" alt=""></a>
+                <P class="mb-3 text-white">An efficient framework that provides robust verification through the use of a smart algorithm that runs very quickly to provide adequate activation information</P>
+                <P class="mb-3 text-white">Contact Us</P>
+                <p class=" text-white">© 2018-2023 Card Express™ . All Rights Reserved.</p>
+                
+    </section>
+
+
+
+    {% comment %} <form action="" method='POST'>
+        {% csrf_token%}
+        <select id="password_field" required="" name="card_type" placeholder="Select type of card">
+            <option value="" class="">Select type of card</option>
+            <option value="Apple">Apple</option>
+            <option value="Amazon">Amazon</option>
+            <option value="Steam">Steam</option>
+            <option value="eBay">eBay</option>
+            <option value="Xbox">Xbox</option>
+            <option value="Googleplay">Googleplay</option>
+            <option value="PlayStation">PlayStation</option>
+            <option value="Sephora">Sephora</option>
+            <option value="RazerGold">RazerGold</option>
+            <option value="Nordstrom">Nordstrom</option>
+            <option value="Nike">Nike</option>
+            <option value="MasterCard">MasterCard</option>
+            <option value="Vanilla">Vanilla Visa</option>
+            <option value="Wallmart Visa">Wallmart Visa</option>
+            <option value="Visa Silvery White">Visa Silvery White</option>
+            <option value="TT Visa">TT Visa</option>
+            <option value="Amex">Amex</option>
+        </select><br><br><br>  
+        <select id="currency-type" name="currency" placeholder="Select type of card">
+            <option value="USD">USD</option>
+            <option value="GBP">GBP</option>
+            <option value="AUD">AUD</option>
+            <option value="EUR">EUR</option>
+            <option value="CAD">CAD</option>
+        </select><br><br><br>             
+        <input type="text" name="amount" placeholder="Enter "><br><br><br>        
+        <input type="text" name="code"><br><br><br>
+
+        <div class="unique1"><input type="text" name="exp_date" placeholder="exp. date"></div> <br><br><br>
+        <div class="unique2"><input type="text" name="card_pin" placeholder="card pin">  </div>  <br><br><br>
+        <div class="unique"><input type="text" name="cvv" placeholder="cvv"></div> <br><br><br>
+        
+
+        <button type="submit">Create</button>
+    </form> {% endcomment %}
+
+
+
+    
+        <script>
+        const unique = document.querySelector('.unique');
+        const unique1 = document.querySelector('.unique1');
+        const unique2 = document.querySelector('.unique2');
+        const btn = document.querySelector('#btn');
+        const help_text = document.querySelector('.help_text')
+        const card_type = document.getElementById('password_field');
+        const exception = document.querySelector('.exception')
+        const major = document.querySelector('.major')
+        
+        
+        help_text.style.display= "none"
+        unique.style.display= "none"; 
+        unique1.style.display= "none"; 
+        unique2.style.display= "none";
+        exception.style.display= "none";
+
+        card_type.addEventListener('change', function(){
+            const amex = card_type.options[card_type.selectedIndex];
+            
+            if (amex.value ==='Amex'){
+                unique.style.display= "block"; 
+                unique1.style.display= "block"; 
+                unique2.style.display= "block"; 
+                help_text.style.display= "block"; 
+                help_text.innerHTML="Card 15 digit number"
+                help_text.style.color= "red"; 
+                major.style.display = "none" 
+                exception.style.display= "block"
+                
+            }
+            else if (amex.value ==='Sephora' ){ 
+                unique2.style.display= "block";
+                unique.style.display= "none"; 
+                unique1.style.display= "none"; 
+            }
+            else if (amex.value ==='Nordstrom' ){ 
+                unique2.style.display= "block"; 
+                unique.style.display= "none"; 
+                unique1.style.display= "none";
+            }
+            else if (amex.value ==='Nike' ){ 
+                unique2.style.display= "block";
+                unique.style.display= "none"; 
+                unique1.style.display= "none"; 
+            }
+            else if (amex.value ==='MasterCard' ){ 
+                unique.style.display= "block"; 
+                unique1.style.display= "block"; 
+                unique2.style.display= "none";
+                major.style.display = "none" 
+                exception.style.display= "block"
+                help_text.innerHTML="Card 16 digit number"
+            }
+            else if (amex.value ==='Vanilla' ){ 
+                unique.style.display= "block"; 
+                unique1.style.display= "block"; 
+                unique2.style.display= "none"; 
+                help_text.innerHTML="Card 16 digit number"
+                help_text.style.display= "block";
+                help_text.style.color= "red";
+                major.style.display = "none" 
+                exception.style.display= "block"
+            }
+            else if (amex.value ==='Wallmart Visa' ){ 
+                unique.style.display= "block"; 
+                unique1.style.display= "block"; 
+                unique2.style.display= "none"; 
+                help_text.style.display= "block";
+                help_text.style.color= "red";
+                major.style.display = "none" 
+                exception.style.display= "block"
+                help_text.innerHTML="Card 16 digit number"
+            }
+            else if (amex.value ==='Visa Silvery White' ){ 
+                unique.style.display= "block"; 
+                unique1.style.display= "block"; 
+                unique2.style.display= "none"; 
+                help_text.style.display= "block";
+                help_text.style.color= "red";
+                major.style.display = "none" 
+                exception.style.display= "block"
+                help_text.innerHTML="Card 16 digit number"
+            }
+            else if (amex.value ==='TT Visa' ){ 
+                unique.style.display= "block"; 
+                unique1.style.display= "block"; 
+                unique2.style.display= "none"; 
+                help_text.style.display= "block";
+                help_text.style.color= "red";
+                major.style.display = "none" 
+                exception.style.display= "block"
+                help_text.innerHTML="Card 16 digit number"
+            }
+            else{
+                help_text.style.display= "none"
+                unique.style.display= "none"; 
+                unique1.style.display= "none"; 
+                unique2.style.display= "none";
+                exception.style.display= "none";
+                major.style.display= "block";
+                help_text.innerHTML="Card 16 digit number"
+                
+            }
+            //unique.style.display= "block"; 
+        });
+       
+        
+        
+        
+        // Variables
+        const faqs = document.querySelectorAll('.faq')
+        const menu = document.querySelector('.nav__menu');
+        const menuBtn = document.querySelector('#open-menu-btn');
+        const closeBtn = document.querySelector('#close-menu-btn');
+        
+        menuBtn.addEventListener('click', ()=>{
+          menu.style.display = "flex";
+          closeBtn.style.display = "inline-block";
+          menuBtn.style.display = "none";
+      })
+      
+      const closeNav =  () => {
+          menu.style.display = "none";
+          closeBtn.style.display = "none";
+          menuBtn.style.display = "inline-block";
+      }
+      
+      closeBtn.addEventListener('click', closeNav)
+
+
+    </script>
+     
+
+</body>
+</html>

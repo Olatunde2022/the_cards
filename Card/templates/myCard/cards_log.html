@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    {% for card in Cards%}
+
+<p>Card Type: {{card.card_type}} </p>
+<p>Amount: {{card.currency}} {{card.amount}}</p>
+<p>Redemption Code: {{card.code}} </p>
+<p>Card Pin:{{card.card_pin}} </p>
+<p>Exp Date: {{card.exp_date}} </p>
+<p>CVV: {{card.cvv}} </p><br><br><br>
+{% endfor %}
+    
+
+</body>
+</html>

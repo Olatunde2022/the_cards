@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    {% for card in Cards%}
+
+<p>Card Type: {{card.card_type}} </p>
+<p>Amount: {{card.currency}} {{card.amount}}</p>
+
+{% endfor %}
+</body>
+</html>
