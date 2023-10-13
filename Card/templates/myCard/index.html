@@ -187,6 +187,16 @@
     text-decoration:none;
     color:white;
   }
+  .nav__menu li a {
+    background:#d63384;
+  }
+  .nav_container button{
+    border: 0;
+    color:#d63384;
+    background:#055160;
+
+}
+
 </style>
 </head>
 <body>
@@ -520,10 +530,7 @@
         <script>
             
         {% for message in messages %}
-        {% if message.tags == 'success' %}
-        {% comment %} <p>Your gift card balance:</p>
-          <h2 class="{{message.tags}}">{{message}}</h2>
-          <a class="btn btn-success" href="##">Check another card</a> {% endcomment %}
+        {% if message.tags == 'success' %}        
           swal(
               "Your gift card balance:",
                 "{{message}}",
