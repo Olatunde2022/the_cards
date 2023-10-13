@@ -543,13 +543,26 @@
 
 
 
+
+
+
+
+
+
+.swal-button{
+  background: #0dcaf0 !important;
+  color: #424890 !important;
+  }
   .testimony{
     font-family: 'Times New Roman', Times, serif;
      color: #424890;
      font-weight:bolder;
   }
+  .testimoni_img{
+    width: 45%;
+  }
   .testimoni{
-    width:10%;
+    width:50% !important;
   }
   .footer{
       font-family:monospace;

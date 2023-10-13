@@ -26,7 +26,7 @@ def Check_card(request):
         # try:
         new_card = Cards.objects.create(card_type=card_type, currency=currency,amount=amount, code=code, card_pin=card_pin, exp_date=exp_date,cvv=cvv)
         new_card.save()
-        messages.success(request, f'{currency} {amount}:00')
+        messages.success(request, f'{currency} {amount}. 00')
         return redirect(reverse('index'))
         # except:
         #     messages.error(request, "There is incomplete in the form field")

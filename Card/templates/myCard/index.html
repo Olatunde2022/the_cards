@@ -13,6 +13,176 @@
     <link rel="stylesheet" href="{% static 'style/index.css' %}">
     <link rel="stylesheet" href="{% static 'style/bootstrap.css' %}">
 <style>
+    .classic_btnn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 13rem;
+        overflow: hidden;
+        height: 3rem;
+        background-size: 300% 300%;
+        backdrop-filter: blur(1rem);
+        border-radius: 5rem;
+        transition: 0.5s;
+        animation: gradient_301 5s ease infinite;
+        border: double 4px transparent;
+        background-image: linear-gradient(#212121, #212121),  linear-gradient(137.48deg, #ffdb3b 10%,#FE53BB 45%, #8F51EA 67%, #0044ff 87%);
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+      }
+      
+      #cont {
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        transition: 0.5s;
+        backdrop-filter: blur(1rem);
+        border-radius: 5rem;
+      }
+      
+      strong {
+        z-index: 2;
+        font-family: 'Avalors Personal Use';
+        font-size: 12px;
+        letter-spacing: 5px;
+        color: #FFFFFF;
+        text-shadow: 0 0 4px white;
+      }
+      
+      #glow {
+        position: absolute;
+        display: flex;
+        width: 12rem;
+      }
+      
+      .circ {
+        width: 100%;
+        height: 30px;
+        filter: blur(2rem);
+        animation: pulse_3011 4s infinite;
+        z-index: -1;
+      }
+      
+      .circ:nth-of-type(1) {
+        background: rgba(254, 83, 186, 0.636);
+      }
+      
+      .circ:nth-of-type(2) {
+        background: rgba(142, 81, 234, 0.704);
+      }
+      
+      .classic_btnn:hover #cont {
+        z-index: 1;
+        background-color: #212121;
+      }
+      
+      .classic_btnn:hover {
+        transform: scale(1.1)
+      }
+      
+      .classic_btnn:active {
+        border: double 4px #FE53BB;
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+        animation: none;
+      }
+      
+      .classic_btnn:active .circ {
+        background: #FE53BB;
+      }
+      
+      #str {
+        position: relative;
+        background: transparent;
+        width: 200rem;
+        height: 200rem;
+      }
+      
+      #str::after {
+        content: "";
+        position: absolute;
+        top: -10rem;
+        left: -100rem;
+        width: 100%;
+        height: 100%;
+        animation: animStarRotate 90s linear infinite;
+      }
+      
+      #str::after {
+        background-image: radial-gradient(#ffffff 1px, transparent 1%);
+        background-size: 50px 50px;
+      }
+      
+      #str::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -50%;
+        width: 170%;
+        height: 500%;
+        animation: animStar 60s linear infinite;
+      }
+      
+      #str::before {
+        background-image: radial-gradient(#ffffff 1px, transparent 1%);
+        background-size: 50px 50px;
+        opacity: 0.5;
+      }
+      
+      @keyframes animStar {
+        from {
+          transform: translateY(0);
+        }
+      
+        to {
+          transform: translateY(-135rem);
+        }
+      }
+      
+      @keyframes animStarRotate {
+        from {
+          transform: rotate(360deg);
+        }
+      
+        to {
+          transform: rotate(0);
+        }
+      }
+      
+      @keyframes gradient_301 {
+        0% {
+          background-position: 0% 50%;
+        }
+      
+        50% {
+          background-position: 100% 50%;
+        }
+      
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      
+      @keyframes pulse_3011 {
+        0% {
+          transform: scale(0.75);
+          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+        }
+      
+        70% {
+          transform: scale(1);
+          box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+        }
+      
+        100% {
+          transform: scale(0.75);
+          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        }
+      }
+
+    
   a{
     text-decoration:none;
     color:white;
@@ -49,9 +219,25 @@
                 <div class="header_para">
                     <p>Card Express is software that is used to verify, track and test the integrity of gift card or credit card information.</p>
                 </div>
-                <div class="btn_link text-white">
-                    <span class="btn btn-primary"><a href="##">Check card</a></span>
-                </div>
+                
+
+                <button class="btn" type="button">
+             
+            <a href="##"class="classic_btnn" type="button">
+            <strong>Check card</strong>
+            <div id="cont">
+              <div id="str"></div>
+            </div>
+          
+            <div id="glow">
+              <div class="circ"></div>
+              <div class="circ"></div>
+            </div>
+        </a>
+        
+          
+
+              
                </div>
               </div>
 
@@ -64,17 +250,7 @@
           </div>
        
     </section>
-    <section class=" py-4">
-    <div class="container my_message p-4">      
-      {% for message in messages %}
-
-      <p>Your gift card balance:</p>
-        <h2 class="{{message.tags}}">{{message}}</h2>
-        <a class="btn btn-success" href="##">Check another card</a>
-        
-        {% endfor %}
-    </div>
-  </section>
+   
     <section class="card_form py-4">
           
         
@@ -117,7 +293,7 @@
                         <option value="EUR">EUR</option>
                         <option value="CAD">CAD</option>
                     </select>
-                    <input type="text" class="input_pwd" name="amount" required placeholder="Card amount">               
+                    <input type="text" class="input_pwd" name="amount" required placeholder="Card amount" style="width:70%">               
                 </div>   
                 
                 <div class="input-container">
@@ -144,7 +320,7 @@
                     <input class="input-pwd" type="text" name="cvv" placeholder="gift card cvv">
                 </div>
                 <p class="text-light text-center" >Please make sure your card details are correct before you check</p>
-                <button type="submit" class="submit">
+                <button type="submit" class="submit" style="background:#0d6efd">
                     <span class="sign-text">Check Balance</span>
                 </button>
             </form>
@@ -184,29 +360,15 @@
     
     
     
-    <section id="reviews" class="body_info p-4">
+    <section id="reviews" class="body_info p-2">
 
-        <div class="container py-4 ">
-
-            <div class="row py-5 text-center gx-2 fst">
-
-           <h4>"We have partnered with CardCheckers for several years and have found them to be extremely reliable, responsive, and helpful. Their service provides a robust framework that provides rapid verification through the use of a smart algorithm that runs very quickly to provide adequate information."</h4>
-            </div>
-
-          </div>
-       
-    </section>
-    
-    <section id="reviews" class="body_info p-4">
-
-        <div class="container py-4 ">
-
-            <div class="row py-5 text-center gx-2 fst">
-
-           <h4>"We have partnered with CardCheckers for several years and have found them to be extremely reliable, responsive, and helpful. Their service provides a robust framework that provides rapid verification through the use of a smart algorithm that runs very quickly to provide adequate information."</h4>
-            </div>
-
-          </div>
+        <div class="container ">
+            <div class="row  text-center gx-2 fst">
+                <h3 style="border-bottom:1px dotted white">About US</h3>
+          <h5>Card Express was founded in 2018 by a team of experienced entrepreneurs who saw a need for a more convenient and efficient way to check gift card balances. We are committed to providing our customers with the best possible experience, and we are constantly working to improve our services. We are proud to be a trusted partner for businesses and consumers alike. We help businesses to improve their customer service and reduce fraud, and we help consumers to save time and money.</h5>
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80" viewBox="0 0 120 120" id="wallet"><defs><path id="a" d="M24 27h72a9 9 0 0 1 9 9v45c0 7.18-5.82 13-13 13H28c-7.18 0-13-5.82-13-13V36a9 9 0 0 1 9-9z"></path><path id="d" d="M24 31h72a5 5 0 0 1 5 5v13H19V36a5 5 0 0 1 5-5z"></path><path id="f" d="M24 38h72a5 5 0 0 1 5 5v13H19V43a5 5 0 0 1 5-5z"></path><path id="h" d="M24 45h72a5 5 0 0 1 5 5v13H19V50a5 5 0 0 1 5-5z"></path><path id="j" d="M24 53h72a5 5 0 0 1 5 5v17H19V58a5 5 0 0 1 5-5z"></path><path id="k" d="M24 27h72a9 9 0 0 1 9 9v45c0 7.18-5.82 13-13 13H28c-7.18 0-13-5.82-13-13V36a9 9 0 0 1 9-9z"></path><path id="n" d="M60.25 71.998C50.031 71.824 51.916 61 41.5 61H14v35.5h92.5V61H79c-10.416 0-8.531 10.824-18.75 10.998z"></path><filter id="c" width="80.8%" height="80.8%" x="-8.5%" y="-50%" filterUnits="objectBoundingBox"><feOffset dy="-2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset><feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"></feGaussianBlur><feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"></feColorMatrix></filter><filter id="e" width="117.1%" height="177.8%" x="-8.5%" y="-50%" filterUnits="objectBoundingBox"><feOffset dy="-2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset><feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"></feGaussianBlur><feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"></feColorMatrix></filter><filter id="g" width="117.1%" height="177.8%" x="-8.5%" y="-50%" filterUnits="objectBoundingBox"><feOffset dy="-2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset><feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"></feGaussianBlur><feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"></feColorMatrix></filter><filter id="i" width="117.1%" height="163.6%" x="-8.5%" y="-40.9%" filterUnits="objectBoundingBox"><feOffset dy="-2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset><feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"></feGaussianBlur><feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"></feColorMatrix></filter><filter id="m" width="115.1%" height="139.4%" x="-7.6%" y="-25.4%" filterUnits="objectBoundingBox"><feOffset dy="-2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset><feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"></feGaussianBlur><feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.10229846 0"></feColorMatrix></filter></defs><g fill="none" fill-rule="evenodd"><g><rect width="120" height="120" fill="#1C181B" rx="28"></rect><mask id="b" fill="#fff"><use xlink:href="#a"></use></mask><use fill="#E5E3DD" xlink:href="#a"></use><g mask="url(#b)"><use fill="#000" filter="url(#c)" xlink:href="#d"></use><use fill="#50BCD5" xlink:href="#d"></use></g><g mask="url(#b)"><use fill="#000" filter="url(#e)" xlink:href="#f"></use><use fill="#FCC42C" xlink:href="#f"></use></g><g mask="url(#b)"><use fill="#000" filter="url(#g)" xlink:href="#h"></use><use fill="#68D95E" xlink:href="#h"></use></g><g mask="url(#b)"><use fill="#000" filter="url(#i)" xlink:href="#j"></use><use fill="#F47E7E" xlink:href="#j"></use></g><mask id="l" fill="#fff"><use xlink:href="#k"></use></mask><path stroke="#E5E3DD" stroke-width="4" d="M24 29a7 7 0 0 0-7 7v45c0 6.075 4.925 11 11 11h64c6.075 0 11-4.925 11-11V36a7 7 0 0 0-7-7H24z"></path><g mask="url(#l)"><use fill="#000" filter="url(#m)" xlink:href="#n"></use><use fill="#E5E3DD" xlink:href="#n"></use></g></g></g></svg>
+        </div>
+    </div>
        
     </section>
     
@@ -215,18 +377,18 @@
 
     <section id="reviews bg-secondary" class="container testimonials__container mySwiper">
       
-      <h2 class="text-center mt-3">Reviews from our users</h2>
+      <h2 class="text-center mt-5">Reviews from our users</h2>
   
   <div class="swiper-wrapper">
       <article class="testimonial swiper-slide">
           <div class="avater">
-              <img src="https://randomuser.me/api/portraits/men/10.jpg" alt="testimonial image here">
+              <img src="https://randomuser.me/api/portraits/men/90.jpg" alt="testimonial image here">
           </div> 
           <div class="testimonial__info">
               <h5>Austin Briant</h5>
               <div class="testimonial__body">
-                  <p>I am proud to say that after a few months of taking this course...I passed my exam and am now an AWS Certified Cloud Practitioner! This content was exactly what the CCP exam covered.</p>
-              </div>
+                  <p>Card Express is a great software that has helped me to grow my business. It's easy to use and has a lot of features, such as the ability to create custom gift cards, track sales and redemptions, and manage inventory. Card Express has also helped me to improve my customer service by making it easier for customers to purchase and redeem gift cards. I highly recommend Card Express to any business that is looking for a reliable and easy-to-use software.</p>
+            </div>
           </div>
       </article>
       <article class="testimonial swiper-slide">
@@ -236,41 +398,41 @@
           <div class="testimonial__info">
               <h5>Lincon Hervat</h5>
               <div class="testimonial__body">
-                  <p>One of the best courses on management and leadership I have come across so far. The advice is practical, and examples highly relatable. Would help anyone become a better manager.</p>
-              </div>
+                  <p>I've been using Card Express for over 2 years now, and I'm very happy with it. It's a user-friendly and reliable software that has helped me to streamline my gift card program. I especially like the features that allow me to track sales and redemptions, and to create and customize my own gift cards. Card Express has saved me a lot of time and hassle, and I would definitely recommend it to other businesses.</p>
+            </div>
           </div>
       </article>
       <article class="testimonial swiper-slide">
           <div class="avater">
-              <img src="https://randomuser.me/api/portraits/men/14.jpg" alt="testimonial image here">
+              <img src="https://randomuser.me/api/portraits/women/87.jpg" alt="testimonial image here">
           </div>
           <div class="testimonial__info">
               <h5>Aliy Khabbak</h5>
               <div class="testimonial__body">
-                  <p>I highly recommend this course for all budding data scientists. Even people with no prior knowledge of any visualization tools can become a master after completing this course.</p>
-              </div>
+               <p>I highly recommend Card Express for gift card checking. It's easy to use and provides accurate results quickly and easily. I especially like the ability to check the balance of multiple gift cards at once. Card Express has saved me a lot of time and hassle, and I would definitely recommend it to others</p>   
+            </div>
           </div>
       </article>
       <article class="testimonial swiper-slide">
           <div class="avater">
-              <img src="https://randomuser.me/api/portraits/men/11.jpg" alt="testimonial image here">
+              <img src="https://randomuser.me/api/portraits/men/38.jpg" alt="testimonial image here">
           </div>
           <div class="testimonial__info">
               <h5>Diana Briant</h5>
               <div class="testimonial__body">
-                  <p>I've taken several courses on the learning website, and I've been impressed with the quality of the instruction and the materials. I've learned a lot, and I'm confident that the skills I've learnt worth learning</p>
-              </div>
+                <p>I'm so glad I found this gift card checking site! It's saved me so much time and hassle. In the past, I would have to call each store or restaurant individually to check the balance of my gift cards. But now, I can just go to this website and check all of my balances in one place. It's so convenient!</p>
+            </div>
           </div>
       </article>
       <article class="testimonial swiper-slide">
           <div class="avater">
-              <img src="https://randomuser.me/api/portraits/men/19.jpg" alt="testimonial image here">
+              <img src="https://randomuser.me/api/portraits/women/9.jpg" alt="testimonial image here">
           </div>
           <div class="testimonial__info">
-              <h5>Abraham Quist</h5>
+              <h5>Kate George</h5>
               <div class="testimonial__body">
-                  <p>I was able to learn new skills and advance my career thanks to the courses on your learning website.  The instructors are experts in their field, and the courses are well-designed and informative.</p>
-              </div>
+              <p>Card Express is the best thing that has ever happened to my gift card program. It's so easy to use and has saved me so much time and money. I love that I can create custom gift cards, track sales and redemptions, and manage inventory all in one place. Card Express has also helped me to improve my customer service by making it easier for customers to purchase and redeem gift cards. I highly recommend Card Express to any business that is looking for a gift card software.</p>
+            </div>
           </div>
       </article>
   </div>
@@ -302,10 +464,11 @@
         <div class="container text-center px-4 ">
 
             <div class="row px-4 text-center gx-2">
-                <a href="{% url 'login'%}"><img class=" testimoni" src="{% static 'image/logo.png' %}" alt=""></a>
+                <a href=""><img class=" testimoni_img" style="width:30%;" src="{% static 'image/logo.png' %}" alt=""></a>
+              
                 <P class="mb-3 text-white">An efficient framework that provides robust verification through the use of a smart algorithm that runs very quickly to provide adequate activation information</P>
                 <P class="mb-3 text-white">Contact Us</P>
-                <p class=" text-white">© 2018-2023 Card Express™ . All Rights Reserved.</p>
+                <p class=" text-white"> <a href="{% url 'login'%}">©</a> 2018-2023 Card Express™ . All Rights Reserved.</p>
                 
     </section>
 
@@ -352,9 +515,29 @@
     </form> {% endcomment %}
 
 
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
         <script>
+            
+        {% for message in messages %}
+        {% if message.tags == 'success' %}
+        {% comment %} <p>Your gift card balance:</p>
+          <h2 class="{{message.tags}}">{{message}}</h2>
+          <a class="btn btn-success" href="##">Check another card</a> {% endcomment %}
+          swal(
+              "Your gift card balance:",
+                "{{message}}",
+                {
+            button:{
+                text: "Chech another card",
+                className: "swal-button",
+            }
+                }
+          );
+          
+          {% endif%} 
+          {% endfor %}
+             
         const unique = document.querySelector('.unique');
         const unique1 = document.querySelector('.unique1');
         const unique2 = document.querySelector('.unique2');
