@@ -618,7 +618,7 @@ display: flex;
 align-items: center;
 gap: 4rem;
 }
-.nav__menu a{
+.nav__menu a{ 
 font-size: 0.9rem;
 transition: var(--transition);
 
